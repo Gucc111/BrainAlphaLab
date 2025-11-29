@@ -1,0 +1,16 @@
+# Example pipeline configuration for BrainAlpha
+alpha:
+  name: sample_alpha
+  expression: "rank(ts_mean(close, 10) - ts_mean(close, 60))"
+  tags:
+    - demo
+workflow:
+  generate_with_llm: false
+  backtest:
+    start_date: 2020-01-01
+    end_date: 2024-01-01
+    universe: top_3000
+  qualification:
+    sharpe_min: 1.0
+    turnover_max: 0.6
+  submit_if_qualified: false
